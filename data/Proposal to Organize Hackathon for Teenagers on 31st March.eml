@@ -1,0 +1,163 @@
+Delivered-To: sujal1negi@gmail.com
+Received: by 2002:a05:7000:10c5:b0:7b1:62c7:bf15 with SMTP id j5csp2755007mae;
+        Mon, 16 Mar 2026 01:41:19 -0700 (PDT)
+X-Received: by 2002:a05:620a:371c:b0:8cd:b2e9:7f6f with SMTP id af79cd13be357-8cdb5abde6amr1608491485a.33.1773650479383;
+        Mon, 16 Mar 2026 01:41:19 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1773650479; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=MJnsc64SjikiQ61drsx239lsIQpjgnbU3g43Fdhsw5bomnrRWiNm1Pu4nTuO8yq25o
+         J3CC3iC6lukN3M1suyJq9L707xdxRnxA09Kf3olsOKNRzKO1+Lx7g9vLO6sARFeCwr3h
+         0XrS8BXel5Bx9C1OMHW7Zn5eUk02TZpb7C48hbAqyCRsq2uPwVw0FLzrW7GVDReL9bjD
+         FKNbgsTYzOI/n1YUn951u78Sswtz25WbMZSixeTJMsqN9J/qdeyk/rpwx/B9aNVn52vI
+         7zPoZlxHsGjuX5wcBcrdY3bOArwQ1SHDqgCKjkt82XCXaEPtv7xfwxAWZCqQyZ6t47O/
+         BwFw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=7spYaO5IAUMX1R2cl4N0cXCV+Wflwakd722OpKGZp5k=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=g2TxXxOB3zycUUwp2QMpG/+MUiIN64GmLZFVTw4ZcYbhoItMVO8xLy9tj7gLGTZROL
+         7Cc+/eQ7Jgxo7UjudBMAjTut9C191gJ7FbAfPVcFIKl52zBFioCMjSpLCbKXc1p2HWMZ
+         HBcQQoK9nmLDKRbcCHf3DY4+b2UEYfcGu8DdRS/VjB3C4dn6TSRWKQf6k6eRBhFlBELb
+         gjsztzzBf5DtnvxFOTbzOmqnTL6BbiZzsWkUFqiEI7/DMKnMAAFVnRo5/6m+2qlESbmP
+         N4qncpcF6c3waDFH5XNIb7BcFL0Fj2h0+ZdyAgeTdr0ExfM5WyGCHEJZMp4lTu5GAfE+
+         mhfg==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="OX/L5Ha0";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ac.otherside@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <ac.otherside@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-8cda1eac6cdsor1045407685a.0.2026.03.16.01.41.19
+        for <sujal1negi@gmail.com>
+        (Google Transport Security);
+        Mon, 16 Mar 2026 01:41:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="OX/L5Ha0";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ac.otherside@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1773650479; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HFtEYD9BocLNvKDrkbbAraAygm+iQ3LmG8HDyEMkIc/3q8amf4IsEj25Jkat8wVSW3
+         N68b8YQwedprGQRMapoHTZBLCCXAljp+X0pcqaWjiEW+uddxospaFKmWHgF5LV1sdYZH
+         /E4G33BJXMANW1DsAbW7zVaFck0h7RvNecnO/jTydKJ+nJmzRgyJ5CCLRzJtjKggYSfk
+         JKtkwElIO33d6nQHXv6yu/t2dRUrxdtRYrYeEtDy5ngQphEjLbiCszDbheUJwe878Yhk
+         /8CU/S7nEPKyMu5FcZEeobXLlTS7lNdSQz0qkp4n5CxPrNb6GSss8uHRb3OyfxnWuf01
+         pT/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=7spYaO5IAUMX1R2cl4N0cXCV+Wflwakd722OpKGZp5k=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=eg9pIO8SLhgD0DCaVmrKF1z9NYRXqiHtduYObmissB3BWmkNyyPD3OPG2SsIy4bgzK
+         qKaHqlCsAKPeLOxKTPf3Oc+aaMMuPGH8EhsLa6R1/cLwqg5AsChNwu95JnbXSok6dh0E
+         RU9toD9ISe6t5rj5dELwjflme+vP824ad82Mj7t92VB+BK3wl4HZtKUSPLzWYvZol5Ho
+         QAsTNCYrPjvk4A3i4sglM/BvXH/+Ez92hbl4qlGVr4saPU3JwjkDnVziYzzOd9kjQaNZ
+         zV5Be6vTJl+OMNPl57Nb8A2TveM4iMjvmZkl8UM/hGsNXpsUXh9iFtXSxXypIbcqf3wC
+         cHQA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773650479; x=1774255279; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=7spYaO5IAUMX1R2cl4N0cXCV+Wflwakd722OpKGZp5k=;
+        b=OX/L5Ha0K4s9MfYlwTc4BJv2Uuw+81b+Xn0EgpQ/+CcdWDB7FUo+Z/VN3foztZAQxZ
+         iIAzavm23QBGqcOPuSQQkf0y+aSneKvqNCfBJ3YII38UlSwrA/KAgOxizN3EGTpGoFjT
+         rvWaGYeHjDRsIHZDbiz3S+HDGnQAYaUXjQgGzautYw4SbJ7kkut2Zdfr/Sof57PORj/C
+         qhju4Nc4K+1TfTZbWrY/3TYRU50Fm5US+qi5IheRneSsudF9s5o6JhgceAxdkFVC4yI4
+         +4Id8Sytt5gKgAhokWBgLglVwTWlZ9oZwf5GkhzGqC1kRMC7SO5FD0f/1UbqrlQNuY3m
+         mwRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773650479; x=1774255279;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7spYaO5IAUMX1R2cl4N0cXCV+Wflwakd722OpKGZp5k=;
+        b=fVpu9hLpoXChqV1J6lREb5RC66DrFaRzXbmmcSGTqKF6isCEU7KIuM37/WBLR+biLW
+         aHmaceDwoQ4cvhQd/sUMEN8ThaWStRpPz0VIvBt8tjiSnMMKo7a0uIZ6owL3FhEFAibh
+         iB0rTaL2W2po4qdy3kQPOVQXb/43E/QSL5+wOcD189zwJRaw/ltaP5R5M7lZk/9BiMKB
+         qpDUqQ+xAk5+R8dIy3uw5MdXnEqhvzK/xhZ/dhcssVUgp0CTr3aWntzEOOLp512JAev7
+         GxJpWazcMMhXM/Nu51XC9vP/xvnRRYDgoP+MjHhrpGnKkaGar/u2S6qK+AZlMvcdZY/y
+         f3Yg==
+X-Gm-Message-State: AOJu0Yx0sTkzpiF4ES4INbX6AY1e4qBB6D56V8AkO4wey5xbUdUm6/jJ
+	33pX6IODVo3E2WZJVkQ9lGChbxg8rh6AcIr3CctsJdZO+lxpw1DqqsfxJGL/c/vY3WE+4w1Bpg+
+	CFJTSweIeOE4jIIPlUPIVynLOdha87qY/GDQ1
+X-Gm-Gg: ATEYQzyhl7c5r1IR6g65dLgM9WitwTW2XEs13+H2exHnJq70C/zdSoGp5bum87As3tT
+	H8WSzlT98TLaDyBhslVLEpj/+ro+9HxCyZIAiBEi6PuYMahW5hr2Np8JFHMQxUOHT08FEZiQSWV
+	+VTquxkwRLOvR8y6tkm43QC+ka/SFOxKvzW3QF3HOUhPL4l3VIwCVem6/LwVhvQsx8Zc1fODBvw
+	PxRsgdg1YaWMreNhRX5yqRpFYLa38tuk7acbUjpPsCqH2UGp27ZRC50K/5HsKQQ7euCbik3mmxB
+	23U+78A=
+X-Received: by 2002:a05:620a:2802:b0:8cd:8d4c:aa0c with SMTP id
+ af79cd13be357-8cdb57e5f95mr1617238285a.0.1773650478685; Mon, 16 Mar 2026
+ 01:41:18 -0700 (PDT)
+MIME-Version: 1.0
+From: Ac otherside <ac.otherside@gmail.com>
+Date: Mon, 16 Mar 2026 14:11:08 +0530
+X-Gm-Features: AaiRm528uSrukPi7lxl5xI7EuoE7psKXDZYj_v7v_yCsxI3vqRMjfMTjQpQuXw0
+Message-ID: <CAG1MKbRCP-pzgzKHcikSOoRfUrKjVO-Q+CGZ0esWr263E_2Fzw@mail.gmail.com>
+Subject: Proposal to Organize Hackathon for Teenagers on 31st March
+To: Sujal Negi <sujal1negi@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000bce0f4064d202e64"
+
+--000000000000bce0f4064d202e64
+Content-Type: text/plain; charset="UTF-8"
+
+Respected Sir,
+
+I hope you are doing well.
+
+I would like to inform you that we are planning to organize a hackathon on
+31st March aimed at teenagers. The objective of this event is to encourage
+young students to explore technology, develop problem-solving skills, and
+gain exposure to innovation and programming at an early stage.
+
+The hackathon will provide participants with an opportunity to collaborate,
+build creative solutions, and learn practical aspects of technology in a
+competitive yet educational environment. We believe this initiative will
+help promote technical awareness and inspire students towards the field of
+computer science and innovation.
+
+We kindly request your permission and guidance to conduct this event
+successfully. Your support will help us ensure that the hackathon is
+organized in a structured and impactful manner.
+
+Looking forward to your approval.
+
+Thank you.
+
+Sincerely,
+Sujal Negi
+
+Btech CSE DS
+
+--000000000000bce0f4064d202e64
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">
+<p class=3D"gmail-isSelectedEnd"><span>Respected Sir,</span></p><p class=3D=
+"gmail-isSelectedEnd"><span>I hope you are doing well.</span></p><p class=
+=3D"gmail-isSelectedEnd"><span>I would like to inform you that we are plann=
+ing to organize a hackathon on 31st March aimed at teenagers. The objective=
+ of this event is to encourage young students to explore technology, develo=
+p problem-solving skills, and gain exposure to innovation and programming a=
+t an early stage.</span></p><p class=3D"gmail-isSelectedEnd"><span>The hack=
+athon will provide participants with an opportunity to collaborate, build c=
+reative solutions, and learn practical aspects of technology in a competiti=
+ve yet educational environment. We believe this initiative will help promot=
+e technical awareness and inspire students towards the field of computer sc=
+ience and innovation.</span></p><p class=3D"gmail-isSelectedEnd"><span>We k=
+indly request your permission and guidance to conduct this event successful=
+ly. Your support will help us ensure that the hackathon is organized in a s=
+tructured and impactful manner.</span></p><p class=3D"gmail-isSelectedEnd">=
+<span>Looking forward to your approval.</span></p><p class=3D"gmail-isSelec=
+tedEnd"><span>Thank you.</span></p><p><span>Sincerely,</span><br><span>Suja=
+l Negi</span></p><p><span>Btech CSE DS</span></p>
+
+<br></div>
+
+--000000000000bce0f4064d202e64--

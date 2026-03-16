@@ -1,0 +1,149 @@
+Delivered-To: sujal1negi@gmail.com
+Received: by 2002:a05:7000:10c5:b0:7b1:62c7:bf15 with SMTP id j5csp2754776mae;
+        Mon, 16 Mar 2026 01:40:43 -0700 (PDT)
+X-Received: by 2002:a05:620a:4502:b0:8c6:d2ca:1d0e with SMTP id af79cd13be357-8cdb5a06038mr1599217085a.11.1773650442899;
+        Mon, 16 Mar 2026 01:40:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1773650442; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=YMstOcPdrCeJK0EbjNfBQrqqZCvDugPPard2dsRI2XxGyIOXv0qqKrgdLANbXgFjhj
+         SB1CP3uhQhO40arR6/jyi0XNe35G1Q06flECKpCFYPAsk6kttE3oCoN7c4YYrTlmguXY
+         74WcdY3yS8GfipcTrqwfZyPoho002lI8L5Kx74YigeUGZm4IYvB3KUS1XVKhlwtGfg+9
+         PW6E8LYxgyjZdRcnyhLYLlfNdhrZDwXDu5ntdebnsce+XzdFbPNpkQjtw9+ffGHEIZ0V
+         NgEYZqqMjIM+3FDyLqUGbOks3S6+tAU8fVLkAAsrnGDbG4hjOaVPYNrcWLZXtPZUMCbC
+         0zWA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=Vwz6SYQnZPy5LId3mqnbEqyok7ITJnS9F5gX4tJ+Yc4=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=FC7zxxyH/TN9IadeP+ckQKhhlYScgVcxii9gZWLuVW1yok2UJR6gajduLX325bMWXs
+         nwABcGqYU/HCCglokfUWX0kReAiL3DnseZv/lXKy+xje++CaPKsRdTaT/jMxf0hvJ3/o
+         t7Wu9nYhbf2/CKrsiSnskKb4uwa+anakHBGY6vP3cHWZgfU4niJpvGEQlO9Zuuo+1IIm
+         qTN79QpL/0deqWJkrCtjIDa2wuLkb+0KMTYlh87Rt1emB0shavMQmOgdQgwijJMeqsNB
+         t4ZbDraLdOgmfGSgxNlYVmDKbEQujC8DHCwaxW8VNAO3iNwt5UHYeq9kZUGq3HcJgOs1
+         3s6Q==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cWo6bqQv;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ac.otherside@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <ac.otherside@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-8cdb83f7781sor498583085a.15.2026.03.16.01.40.42
+        for <sujal1negi@gmail.com>
+        (Google Transport Security);
+        Mon, 16 Mar 2026 01:40:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cWo6bqQv;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of ac.otherside@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ac.otherside@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1773650442; cv=none;
+        d=google.com; s=arc-20240605;
+        b=TzA2Mm/2xAC/SmeT7z2RSdiD0dfCzN9x7IE/xSSGJAALlxnU4UaxTkOCIfvn9jlBMS
+         W9yLSjSW9+yuoh+YA4mQFG6ISWEs61wMqjTr5gDT4e9BkQ6wGrCTaFPUQuXTJNYE1W/7
+         gLpo/oeM7OSDrs28cnCS6VRVr7R8Lgb197x0Zfbw9PyiMW8y5av37YqUQn1HZx/EcZeo
+         dW0nikCQ+g8h20Bxt2xbG4xyJEdL00kzbAdpwvHvf45T/H98wMQqAYXgUx3dpCWLsoyz
+         iO/A0UM3Ak+lQpSIaLRxFMJMcKMbypA9GV0+ye/vZJqo0jH3etKk9JIWOSFsKD1Wd626
+         a0lA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=Vwz6SYQnZPy5LId3mqnbEqyok7ITJnS9F5gX4tJ+Yc4=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=XxypgnIlAHR3Atpr15K+NhKV0i4Pj1WY2Mo7nuHs7h64n81EKljcAqS+BezPtsQGvP
+         KuKNBErHrJnzMU92ceq2sosj5rbGNQA50JH1mqumpl/ZFCV7+BoGcvjmdfGbPbPebpK3
+         swfFaQS/8dCgcIC0detCALdBVOQJhlafW88Kdupcfxqszcrzmh4boooEkzHhhUiNda80
+         Sj0GhSWiuyxJ7Ld/r9z0ZuEkNb9XAcgvBPFQsQBoJ0W1RgQjIhRyORHlvu6Tsfak68Q9
+         0E0puODT/3sCud+nFszxZs3Xu1P/oQDCTUFGsgZXaHhSmMRqzop4aGVJC4387CFQD9ue
+         NmDA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773650442; x=1774255242; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Vwz6SYQnZPy5LId3mqnbEqyok7ITJnS9F5gX4tJ+Yc4=;
+        b=cWo6bqQvuf5z0cnyfsfQ+O0EZCJMY1KZf0wZOhLJfUdD2KTokkZTUwbXCa54BK2yoT
+         dDwcseSQGkqNnXEG6LH6kU9MjWzgwUe7cIvJ6jyf5+hrtSCt6UnGmjtQdXZ+sRnYojzJ
+         snjqyYWsLfT0E63JLrwKdNTAlUMdJzj/KGAgo/s0TMzQW7DhY55JjbqA8nwox40+AITK
+         wqkD6PYgOrylUpCaYfMNrmdgcJbk0f2cvY7IyZJscL2SRS6RT311MQarrl262W0Zh4ku
+         ESU5i/Gc17ZDo0FLwznyQWbAgJHQMafe/rFKqmh+u1iIIr65HLI7f8gRFFyxKGAEezwn
+         ETYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773650442; x=1774255242;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Vwz6SYQnZPy5LId3mqnbEqyok7ITJnS9F5gX4tJ+Yc4=;
+        b=cgJ9tSkBdFh7J4o+DFa/iXnQfcvkxBXdpoPbK8Obxz+aeVoBXU3uxWtPtuEcjBlEk6
+         /ONjLaADaeHEIfK32d2dCEFhtQlNhm662Y9xoHECHf4OGiq67Bo6yMxzGvaGOeKixdJq
+         m4A3BCl68C0e9WB9PoAao6EQuxiHX7+G1fvEO34PPuKteWbDIFYUADFw9L42Pqjv8nTu
+         9vMq1XR/tM89CINMs8wEvis922IWWVVUst/KhL/Sl95GOWM1a3Lwdyfs1FxACA/FWeqQ
+         09z1ymWOIl6F6TycMJu4L6bIk4XmVRGOFBE2bQ6nJTzefAE9PT7B15WA/thh75ftXrRj
+         GI9Q==
+X-Gm-Message-State: AOJu0YyHrP0rWX7ZKGe4Pk9t1OsF6WbatCDlMzrcHYtw9j2J/vkOQbgR
+	UY69oC3Dgzc7II8hNoX8SKfW0a3PmyjM8Y6hH08m78aRWAtqKL9XpXuXUZoFP3VoF+7SB4/rtSr
+	TOqfE2oM03r+PShZvfxvq3ji9BCRU5fEqlo2P
+X-Gm-Gg: ATEYQzyAFkIQOZoiacKQ/ergt/iQ11l4XaV9qtJxIx3hhZDcRq3IRvLZ7HSXS/3y4Rd
+	jWmFAG4RqRvRqu493EMNgzToYEUcIZCH+Ox9XocirqUHoMEx7fG3Vbk+XTXHT+brInve0LBu2bl
+	yXlTgKA+5VsEm9M42Ps3I+9gl7sNpN9R/gKu03YYlk2W6z0DDHabKefMFre2QNqALKyE7S3p/f5
+	TxdkVgYOMUmoddTEvHJ9ftOc92ILM/83fmdEG7swYUrRgku/TnC/Quf4N6PwwzvaHbLPkHEYIkz
+	rwQDTfU=
+X-Received: by 2002:a05:620a:72aa:b0:8cd:c01f:84c0 with SMTP id
+ af79cd13be357-8cdc01f866cmr986246485a.61.1773650442282; Mon, 16 Mar 2026
+ 01:40:42 -0700 (PDT)
+MIME-Version: 1.0
+From: Ac otherside <ac.otherside@gmail.com>
+Date: Mon, 16 Mar 2026 14:10:31 +0530
+X-Gm-Features: AaiRm52Bw2yZbou3HCmkua4ddaQ_fjh7yUAGSXF_Fc60xEO6W575zHZnXMy7nuc
+Message-ID: <CAG1MKbS-6jJFU1-4saoOgnfEV0VzT6iyC5++Su0696BpJKCkFg@mail.gmail.com>
+Subject: Request for Duty Leave Approval to Attend Hackathon
+To: Sujal Negi <sujal1negi@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000009169f9064d202c32"
+
+--0000000000009169f9064d202c32
+Content-Type: text/plain; charset="UTF-8"
+
+Respected Sir,
+
+I hope you are doing well.
+
+I would like to inform you that I am planning to attend a hackathon on 31st
+March. The event will provide an opportunity to apply our technical
+knowledge, gain practical exposure, and interact with other participants in
+the field of technology.
+
+Therefore, I kindly request you to grant me duty leave for the mentioned
+date so that I can participate in the event.
+
+I would be grateful for your approval.
+
+Thank you for your consideration.
+
+Sincerely,
+Sujal Negi
+B.Tech CSE (Data Science)
+
+--0000000000009169f9064d202c32
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">
+<p class=3D"gmail-isSelectedEnd"><span>Respected Sir,</span></p><p class=3D=
+"gmail-isSelectedEnd"><span>I hope you are doing well.</span></p><p class=
+=3D"gmail-isSelectedEnd"><span>I would like to inform you that I am plannin=
+g to attend a hackathon on 31st March. The event will provide an opportunit=
+y to apply our technical knowledge, gain practical exposure, and interact w=
+ith other participants in the field of technology.</span></p><p class=3D"gm=
+ail-isSelectedEnd"><span>Therefore, I kindly request you to grant me duty l=
+eave for the mentioned date so that I can participate in the event.</span><=
+/p><p class=3D"gmail-isSelectedEnd"><span>I would be grateful for your appr=
+oval.</span></p><p class=3D"gmail-isSelectedEnd"><span>Thank you for your c=
+onsideration.</span></p><p><span>Sincerely,</span><br><span>Sujal Negi</spa=
+n><br><span>B.Tech CSE (Data Science)</span></p>
+
+<br></div>
+
+--0000000000009169f9064d202c32--

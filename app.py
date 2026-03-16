@@ -2,6 +2,8 @@ import os
 import json
 import re
 import uuid
+import time
+import PyPDF2
 from email import policy
 from email.parser import BytesParser
 
@@ -12,7 +14,7 @@ from dateutil import parser as date_parser
 from dotenv import load_dotenv
 import google.generativeai as genai
 
-# Load .env
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -27,15 +29,13 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 os.makedirs(SESSIONS_FOLDER, exist_ok=True)
 
-# ── Configure Gemini ──
+
+# Load .env file and configure the Gemini API key
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
-
-# ──────────────────────────────────────────────
 # Sender-type classification keywords
-# ──────────────────────────────────────────────
 PROFESSOR_KEYWORDS = [
     "prof", "professor", "dr.", "doctor", "dean", "hod",
     "faculty", "lecturer", "department", "dept",
@@ -61,9 +61,7 @@ COMPANY_KEYWORDS = [
     "hackclub", "hack club",
 ]
 
-# ──────────────────────────────────────────────
 # Purpose classification keywords
-# ──────────────────────────────────────────────
 PURPOSE_MAP = {
     "Leave / Permission": [
         "leave", "permission", "absent", "absence",
@@ -263,29 +261,28 @@ def load_session(session_id):
 # ──────────────────────────────────────────────
 # Gemini Flash — Generate email response
 # ──────────────────────────────────────────────
-def generate_ai_response(email_data):
-    """Use Gemini Flash to draft a reply for an email."""
+def generate_ai_response(email_data, guidelines_text=""):
+    """Use Gemini Flash to draft a reply for an email, with optional guidelines."""
     if not GEMINI_API_KEY:
         return "[No API key configured]"
 
-    prompt = f"""You are a helpful email assistant. Draft a professional and appropriate reply 
-to the following email. Keep the tone matching the context — formal for professors/officials, 
-friendly for students, professional for companies. Be concise but complete.
+    guidelines_section = ""
+    if guidelines_text:
+        guidelines_section = f"\n\n--- GUIDELINES TO FOLLOW ---\n{guidelines_text}\n----------------------------\n"
 
---- EMAIL ---
-From: {email_data.get('from', 'Unknown')}
-Subject: {email_data.get('subject', '(No Subject)')}
-Date: {email_data.get('date', '')}
-Category: {email_data.get('sender_type', '')} — {email_data.get('purpose', '')}
+    prompt = f"""You are a technology professor responding to an email. Your tone must be highly formal, professional, and academic.
+First, assess the email content. Then, formulate your response based on the context.{guidelines_section}
 
-Body:
+--- EMAIL TEXT ---
 {email_data.get('body_full', email_data.get('body_preview', ''))}
---- END EMAIL ---
+--- END EMAIL TEXT ---
 
-Draft a reply (just the reply body, no subject line):"""
+Generate a formal and professional reply (body only). Incorporate the guidelines if they apply to the email context:"""
 
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        # Added a 4-second delay to respect Free Tier rate limits (15 requests/min)
+        time.sleep(4)
+        model = genai.GenerativeModel("gemini-2.5-flash-lite")
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as e:
@@ -552,6 +549,20 @@ def export():
         flash("Session expired or not found. Please process emails again.", "error")
         return redirect(url_for("index"))
 
+    # Extract text from the guidelines PDF if provided
+    guidelines_text = ""
+    if "guidelines_pdf" in request.files:
+        pdf_file = request.files["guidelines_pdf"]
+        if pdf_file and pdf_file.filename.lower().endswith(".pdf"):
+            try:
+                reader = PyPDF2.PdfReader(pdf_file)
+                for page in reader.pages:
+                    text = page.extract_text()
+                    if text:
+                        guidelines_text += text + "\n"
+            except Exception as e:
+                print(f"Error reading PDF guidelines: {e}")
+
     selected_indices = set()
     for s in selected_raw:
         try:
@@ -563,7 +574,7 @@ def export():
     ai_responses = {}
     for idx in selected_indices:
         if 0 <= idx < len(results):
-            ai_responses[idx] = generate_ai_response(results[idx])
+            ai_responses[idx] = generate_ai_response(results[idx], guidelines_text)
 
     # Generate Excel
     output_filename = f"Hermes_Report_{session_id}.xlsx"

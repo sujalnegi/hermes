@@ -85,7 +85,7 @@
     </section>
 
     <!-- Export Form wrapping the entire table -->
-    <form action="{{ url_for('export') }}" method="POST" id="export-form">
+    <form action="{{ url_for('export') }}" method="POST" id="export-form" enctype="multipart/form-data">
         <input type="hidden" name="session_id" value="{{ session_id }}">
 
         <!-- Toolbar: Filters + Selection + Export -->
@@ -123,10 +123,17 @@
                         </button>
                         <span class="selection-count" id="selection-count">0 selected for AI response</span>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="export-btn">
-                        <span class="material-icons-round">download</span>
-                        Export as Excel
-                    </button>
+                    <div class="action-buttons" style="display:flex; align-items:center; gap:12px;">
+                        <input type="file" name="guidelines_pdf" id="guidelines-pdf" accept=".pdf" style="display:none;">
+                        <button type="button" class="btn btn-outline" id="add-guidelines-btn">
+                            <span class="material-icons-round">picture_as_pdf</span>
+                            <span id="guidelines-label">Add Guidelines</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="export-btn">
+                            <span class="material-icons-round">download</span>
+                            Export as Excel
+                        </button>
+                    </div>
                 </div>
             </div>
 

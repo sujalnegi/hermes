@@ -161,6 +161,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Guidelines PDF Upload
+    const addGuidelinesBtn = document.getElementById("add-guidelines-btn");
+    const guidelinesPdfInput = document.getElementById("guidelines-pdf");
+    const guidelinesLabel = document.getElementById("guidelines-label");
+
+    if (addGuidelinesBtn && guidelinesPdfInput) {
+        addGuidelinesBtn.addEventListener("click", () => {
+            guidelinesPdfInput.click();
+        });
+
+        guidelinesPdfInput.addEventListener("change", (e) => {
+            if (e.target.files && e.target.files.length > 0) {
+                const file = e.target.files[0];
+                guidelinesLabel.textContent = file.name;
+            } else {
+                guidelinesLabel.textContent = "Add Guidelines";
+            }
+        });
+    }
+
     // Export form — loading state
     if (exportForm) {
         exportForm.addEventListener("submit", () => {
