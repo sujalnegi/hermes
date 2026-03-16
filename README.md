@@ -1,4 +1,8 @@
-# 🏛️ Hermes
+<p align="center">
+  <img src="static/images/android-chrome-192x192.png" alt="Hermes Logo" width="120"/>
+</p>
+
+<h1 align="center">Hermes</h1>
 
 Hermes is a powerful, AI-driven email sorting and response generation platform. Think of it as your personal administrative assistant—designed to parse raw email files, automatically categorize them by sender and purpose, and leverage Google's Gemini AI to draft formal, context-aware replies. 
 
