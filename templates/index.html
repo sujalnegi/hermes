@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes — Answer & Sort Your Emails</title>
+    <meta name="description" content="Hermes, the messenger of the gods, sorts your emails. Upload .eml files, categorize them, and let Gemini Flash draft responses — all in one Excel report.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Subtle background texture -->
+    <div class="bg-noise"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-brand">
+            <img src="{{ url_for('static', filename='images/android-chrome-192x192.png') }}" alt="Hermes" class="nav-logo">
+            <span class="brand-text">Her<span class="brand-accent">mes</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="#upload-section" class="nav-link btn-nav">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- ═══════ HERO SECTION ═══════ -->
+    <section class="hero" id="hero">
+        <!-- Centered Logo -->
+        <div class="hero-logo-wrap">
+            <img src="{{ url_for('static', filename='images/android-chrome-512x512.png') }}" alt="Hermes Logo" class="hero-logo" id="hero-logo">
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-title" id="hero-title">
+            Answer <span class="amp">&amp;</span> <span class="highlight">SORT</span> mails
+        </h1>
+
+        <!-- Tagline -->
+        <p class="hero-tagline">The messenger of the gods, now for your inbox.</p>
+
+        <!-- Description -->
+        <p class="hero-desc" id="hero-desc">
+            Upload your emails in <code>.eml</code> format — Hermes categorizes them by sender
+            (Professor, Student, Company) and purpose (Leaves, Events, Jobs&hellip;), then uses 
+            <strong>Gemini Flash</strong> to draft a response for every email. 
+            Everything exported to a clean Excel report.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta" id="hero-cta">
+            <a href="#upload-section" class="btn btn-primary">
+                <span class="material-icons-round">bolt</span>
+                Start Sorting
+            </a>
+            <a href="#how-it-works" class="btn btn-outline">
+                Learn More
+            </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-hint" id="scroll-hint">
+            <span class="material-icons-round">expand_more</span>
+        </div>
+    </section>
+
+    <!-- ═══════ HOW IT WORKS ═══════ -->
+    <section class="section" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-icon"><span class="material-icons-round">upload_file</span></div>
+                <h3>Upload Emails</h3>
+                <p>Drop your <code>.eml</code> files or point to the data folder. Hermes handles the parsing.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-icon"><span class="material-icons-round">category</span></div>
+                <h3>Auto-Categorize</h3>
+                <p>Emails are sorted by <strong>sender type</strong> and <strong>purpose</strong> automatically.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-icon"><span class="material-icons-round">auto_awesome</span></div>
+                <h3>AI Responses</h3>
+                <p><strong>Gemini Flash</strong> drafts a reply for each email — saved in a new column in the report.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <div class="step-icon"><span class="material-icons-round">download</span></div>
+                <h3>Download Report</h3>
+                <p>Get a beautifully formatted <strong>Excel workbook</strong> with categories, responses, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ UPLOAD SECTION ═══════ -->
+    <section class="section" id="upload-section">
+        <h2 class="section-title">Get Started</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">
+                <span class="material-icons-round">{{ 'error' if category == 'error' else 'check_circle' }}</span>
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="upload-grid">
+            <!-- Upload Card -->
+            <div class="card" id="upload-card">
+                <div class="card-header">
+                    <span class="material-icons-round card-icon">cloud_upload</span>
+                    <h3>Upload .eml Files</h3>
+                </div>
+                <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+                    <div class="drop-zone" id="drop-zone">
+                        <div class="drop-zone-inner" id="drop-zone-inner">
+                            <span class="material-icons-round dz-icon">inbox</span>
+                            <p class="dz-text">Drag &amp; drop <code>.eml</code> files here</p>
+                            <p class="dz-sub">or click to browse</p>
+                        </div>
+                        <div class="file-list" id="file-list" style="display:none;">
+                            <div class="file-list-head">
+                                <span class="material-icons-round">attach_file</span>
+                                <span id="file-count">0 files</span>
+                            </div>
+                            <ul id="file-names"></ul>
+                        </div>
+                        <input type="file" name="eml_files" id="eml-input" multiple accept=".eml" hidden>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submit-btn" disabled>
+                        <span class="material-icons-round">auto_fix_high</span>
+                        Process &amp; Generate Report
+                    </button>
+                </form>
+            </div>
+
+            <!-- Data Folder Card -->
+            <div class="card" id="data-card">
+                <div class="card-header">
+                    <span class="material-icons-round card-icon">folder_open</span>
+                    <h3>Use Data Folder</h3>
+                </div>
+                <div class="card-body">
+                    <p>Already have <code>.eml</code> files in the project's <code>data/</code> folder? Process them in one click.</p>
+                    <div class="info-box">
+                        <span class="material-icons-round">info</span>
+                        <span>Hermes will parse, categorize, and generate a full report from your data folder.</span>
+                    </div>
+                    <form action="{{ url_for('process_data') }}" method="POST">
+                        <button type="submit" class="btn btn-secondary btn-full" id="data-btn">
+                            <span class="material-icons-round">folder_special</span>
+                            Process Data Folder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="{{ url_for('static', filename='images/android-chrome-192x192.png') }}" alt="" class="footer-logo">
+        <p>&copy; 2026 Hermes &mdash; The messenger of the gods, for your inbox</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

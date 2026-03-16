@@ -1,0 +1,225 @@
+Delivered-To: sujal1negi@gmail.com
+Received: by 2002:a05:7000:10c5:b0:7b1:62c7:bf15 with SMTP id j5csp1275422mae;
+        Fri, 13 Mar 2026 06:59:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWUEuk7l8DybvjdLpgOMIXwt3uGiYzc77Ra4zm5IafA2/9QM0nS/ve+cVI9PKibEERbUtXx/62U3OY2@gmail.com
+X-Received: by 2002:a05:6830:6abb:b0:7d7:5959:946f with SMTP id 46e09a7af769-7d78242a0b5mr2201037a34.7.1773410357083;
+        Fri, 13 Mar 2026 06:59:17 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1773410357; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=JGgwAkHLt1ie0TWfRBDZqCyko4JH563H2VnJ4+lmqAOfjufewNTDbKDLrAdJ49pMKc
+         wgP6Zle0I7+7+7ytvJ9scX60zicVESvq/Bh1NVkum6dj6LzE5thvBjzJblps7N2fia0V
+         90jEqywE1Dk8ujmuxZ1UQqidPdrSEZ7ZNFMJI32iG2Tn/a1kQKZM12domeI8BH/fE6RM
+         x9IG2hz9+NKLHPaXF7G2NNkag6FAV7iK+zSr49oFveMzZOmn9Afu/6yuWtVJ96iqk1ki
+         S/n5/Y0bJfMxerVlPb27RmVVJQY3tdz0FUkfQbjPXtoF0gV0D+fXk8aBjwQ2sSowno1S
+         myiw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=+iZdaXbqzdnJ5ifsUtpcms3BKKHPdqfsoP+jfFFqrPI=;
+        fh=/7uKB6X35hHfOpoir4mHIrW8uCT74yg/xO7kmg75KhY=;
+        b=e7VAkX6jvwqwjaenJaQAEPO1CeAM0FijGlJ/pl1NNKwuot2pATN0aeTyrpXYy2dxYL
+         W1R1RsxyCabTGeAKFM2yOUKgJaUXE3FIubXOZamc09A785objDYB+AtOgfPzj1wuy85K
+         V6AIlpgXSs8isODkyWDfxqHouZMVIKhH+mfvz8eNLr/QjJjOcq8yt7zG+NpCRI6XJplU
+         dvJeU9j79Z4o3so79NEOUpXo/PQuUBBDX0WXPSppqSoOGfX+6WAK0jESAe5PRQhzeYll
+         NEHuozTI2b6TbpyeFo6yUGaZysk2awGe3YY3Sg0wXXoXYW/dRdSEZKwrHSo8GEwO9iwe
+         3eTw==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@techkriti-org.20230601.gappssmtp.com header.s=20230601 header.b="tovQc/Nw";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of khushboo@techkriti.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=khushboo@techkriti.org;
+       dara=pass header.i=@gmail.com
+Return-Path: <khushboo@techkriti.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 46e09a7af769-7d7780fa9c3sor2336125a34.0.2026.03.13.06.59.17
+        for <sujal1negi@gmail.com>
+        (Google Transport Security);
+        Fri, 13 Mar 2026 06:59:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of khushboo@techkriti.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@techkriti-org.20230601.gappssmtp.com header.s=20230601 header.b="tovQc/Nw";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of khushboo@techkriti.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=khushboo@techkriti.org;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1773410357; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AQ3P+/aWyKRUEbNPJdN9VC7za55d+RqZL9cntCQFvw1Xq5AbNpi8OsX44iKUvv4dKO
+         020SDWXqfZJEJGK5+R9dEs27JpihS3n5iyorQfYZ2AJnQriYCqbmprgTqJTT4H2Lx7Vy
+         K6guegIOmxz8haDkJpozoYUM2KJ3QHwbroP5VmyfMGdnnB8SKaIZSDC1hVlQGdRfbHIi
+         katZdfglwk6BI+Wve5g8dR/wjW9z1AK/vNQBf+sZptaeuIpL7Z31xEUSdJXvqhP2/pAj
+         7evxjc+/zwhIK6baJd7xjtBDunGXehk90/B6z2qxaQAJlEbfLxFCQOEOM1EebCtNEWBR
+         sV7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=+iZdaXbqzdnJ5ifsUtpcms3BKKHPdqfsoP+jfFFqrPI=;
+        fh=/7uKB6X35hHfOpoir4mHIrW8uCT74yg/xO7kmg75KhY=;
+        b=UrH/xtsLhy3V0nTlqjnquJDq6jx1fiO29cXVTd4CZlcC0sLf9WK+H8gi+S+64+JG98
+         HLxJSQ6Xn2UgnpgOcsTVfzgDoeK/zrA4hJdx6ux8tOa/bHnSbqj//nUeaMShJ0sxw7e1
+         5lLXGS7GEqhkJZ91MiBS7W7E6VUe0y7YwHjY7hgkHXzfZKfSQVq7CvfmayqbJE9z0sBW
+         fKBsvrB0+b5d8qwiY1GdUBZVEzbyj6kXYY+k7x2x4B0WsLzuUEqg5n+q1wM96FQBaik3
+         fqpREM+XkfbpGvJJIZO78xTEikI7GDnRAwWoFUkx876YjzE9q0lUNXc0oIlwlUOLKjf9
+         nP6w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=techkriti-org.20230601.gappssmtp.com; s=20230601; t=1773410357; x=1774015157; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+iZdaXbqzdnJ5ifsUtpcms3BKKHPdqfsoP+jfFFqrPI=;
+        b=tovQc/Nw9fx34U9MJzrMnvibO3RmBqV/R10oFGbCsdKShHnJsim2ynXeYTnd3Dx8to
+         UxxE0ebfRxSLX9vPbdd294rCc2MVqhq+SrDpJqtuCD1e7FOH7eHlhyllcVoADZ9Z1xpN
+         Vgmf1JbLpMIOUnVX1NVHOv1F9QxoCTar2nOhv1xZil0ZHBIkidGo+W9MSoNJWeOBIY5E
+         i132kz/GeF5yKgA9tFYB6d1PD0AaWM2HDx5LtEAAchX5uM+qg6UTjy2D8QYfcYptAjN3
+         rIozdDhH5YvJ4qvR4KMfcW4josenPx9Amq2XGuBWLTvty9ZRTWK7ZuDy51W4pet6okzG
+         AvZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773410357; x=1774015157;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+iZdaXbqzdnJ5ifsUtpcms3BKKHPdqfsoP+jfFFqrPI=;
+        b=pYTHwE0wREroRJ8KlXK1PWAOSQdbgkZ1x+e+1H2C88HRSmBZ4/zFW/RsgN0sC9Zrsh
+         fKU4k/RmZaY05Uo/bGmCEZq2la2cGwqOm0bKrGZmEnh0lzB5Qx6TOgwttLaSg5/3dPfA
+         krPBb+QFPi5/sg6WcfiM3S87DH3Jtc983F6I+Qw+LGPkdxpueb+GG97yHNbhiQiPlq2z
+         mCAiWroCmgZoHzdi8KbsTaT0YUWrlZsm56A26s1cagK6DfGqlopUZKr5/KirzENcneMi
+         zSpWiJbz80MExjcyGX8yYNUK7LsiLicMZMQW26NpEjg6ca4JlJ2OfZAcHosnz995PM8l
+         nh8g==
+X-Forwarded-Encrypted: i=1; AJvYcCVgftRPJszeoAt4QUUjAUClD61AMO6lNV3452v6/A5rxp25tMef15vHoRvf2o5ix4OifhcV9iOo8/iQ@gmail.com
+X-Gm-Message-State: AOJu0YztYCi8THzKXDH2fJW8eVv4pbZ+J1TyLvKy4yWenxHp76qh7+Zc
+	+cUUBGHGtnI8XkZjpvbyqi9Ktf9waElySGmWa/Ox/M99UC5i+/6RL743wqqlIYcaKohMGBBo4/j
+	aKgLZPfTvxZ0NoHn6o+Ev1sVsF5ZfRNTdDaLVWmHhOxR9UHfaxMHJqFibUCwVrxg=
+X-Gm-Gg: ATEYQzyrbiT6sd1uFIoE9a36iQBVlBl4fvKqzi8CUUV44fM4eOmzmxoS980wo87z90R
+	D6d5i4jICb3+gwKSVBrSenCQMM4ib8f8/Dgv8wqpK+hLjmSnsR/euo7nJPbUzjbOcEbWUJ8e2pz
+	gYIiQRWjzS/6WcOZQZDZqa7YbpOlD7X2KGYAxntuZUd6q22LVuoeO+L2gBvcgZKD+p8A+3aoWRM
+	yO6xmMicbAFlazkFkCmCgqtbez06AUESsmMPxpYLSa407ghk42EFFFrmMqy6b5tbommLs+Pi+Td
+	L8tGrVxBb/f9JxHsTJfhmtmGUjbF/qoCjfeUpgmc
+X-Received: by 2002:a05:7300:e208:b0:2ba:8018:cc53 with SMTP id
+ 5a478bee46e88-2bea55edbd4mr1701577eec.35.1773410038313; Fri, 13 Mar 2026
+ 06:53:58 -0700 (PDT)
+MIME-Version: 1.0
+From: Khushboo Kumari <khushboo@techkriti.org>
+Date: Fri, 13 Mar 2026 19:23:45 +0530
+X-Gm-Features: AaiRm52EOWR5nXsv8eZH0YK3Qj1vP2CI-z2cgbHuYXUJeEBrqWAWwgkpy2r3c4k
+Message-ID: <CAAWW3itPMKNxEY+JsyVUTYrwvs4LEyOGSqVTmo+V60N8OBewHw@mail.gmail.com>
+Subject: Last Reminder: Complete Your Payment for Techkriti (Deadline: 14th March)
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000006007b4064ce83332"
+Bcc: sujal1negi@gmail.com
+
+--0000000000006007b4064ce83332
+Content-Type: text/plain; charset="UTF-8"
+
+Dear Participant,
+
+This is a *final reminder* to complete your payment for participating in
+*Techkriti*.
+
+If you have already completed the payment, please *ignore this email*.
+
+For those who have not yet completed the payment, kindly do so *before the
+deadline: 14th March* to confirm your participation.
+
+You can complete your payment using the link below:
+*Payment Link:* Click Here
+<https://onlinesbi.sbi.bank.in/sbicollect/icollecthome.htm?corpID=314456>
+
+Website: techkriti.org
+
+After completing the payment, please make sure to *download the receipt and
+upload it on the portal* as required.
+
+If you face any issues or have any queries, feel free to reach out to us.
+
+We look forward to seeing you at *Techkriti!*
+
+Best regards,
+
+
+-- 
+
+[image: Techkriti_logo.png]
+*KHUSHBOO KUMARI*
+Head Events & Competitions | Techkriti'26
+Indian Institute of Technology Kanpur
+*Email:* khushboo@techkriti.org <hospitality@techkriti.org>
+*Phone*: (+91) 9352941607
+
+*Join Us:* Website <http://www.techkriti.org/> | Facebook
+<https://www.facebook.com/techkriti.iitk> | Twitter
+<https://twitter.com/techkriti_iitk> | Google+
+<http://google.com/+TechkritiOrg_iitk> | Instagram
+<https://www.instagram.com/techkriti.iitk/> | YouTube
+<https://www.youtube.com/user/TechkritiIITK> | LinkedIn
+<https://www.linkedin.com/company/techkriti%2713>
+
+--0000000000006007b4064ce83332
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p>Dear Participant,</p><p>This is a=C2=A0<strong>final re=
+minder</strong>=C2=A0to complete your payment for participating in=C2=A0<st=
+rong>Techkriti</strong>.</p><p>If you have already completed the payment, p=
+lease=C2=A0<strong>ignore this email</strong>.</p><p>For those who have not=
+ yet completed the payment, kindly do so=C2=A0<strong>before the deadline: =
+14th March</strong>=C2=A0to confirm your participation.</p><p>You can compl=
+ete your payment using the link below:<br><strong>Payment Link:</strong>=C2=
+=A0<a href=3D"https://onlinesbi.sbi.bank.in/sbicollect/icollecthome.htm?cor=
+pID=3D314456" target=3D"_blank">Click Here</a></p><p>Website:=C2=A0<a href=
+=3D"http://techkriti.org/" target=3D"_blank">techkriti.org</a></p><p>After =
+completing the payment, please make sure to=C2=A0<strong>download the recei=
+pt and upload it on the portal</strong>=C2=A0as required.</p><p>If you face=
+ any issues or have any queries, feel free to reach out to us.</p><p>We loo=
+k forward to seeing you at=C2=A0<strong>Techkriti!</strong></p><p>Best rega=
+rds,</p><div><br clear=3D"all"></div><div><br></div><span class=3D"gmail_si=
+gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature" da=
+ta-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div style=3D"color:rgb(8=
+0,0,80)"><table style=3D"font-size:12.8px;border:none;border-collapse:colla=
+pse"><tbody><tr style=3D"height:0pt"><td style=3D"border-right:1pt solid rg=
+b(0,0,0);vertical-align:top;padding:5pt"><p dir=3D"ltr" style=3D"line-heigh=
+t:1.2;margin-top:0pt;margin-bottom:0pt;text-align:center"><span style=3D"fo=
+nt-size:11pt;font-family:Arial;color:rgb(0,0,0);background-color:transparen=
+t;vertical-align:baseline"><img src=3D"https://lh5.googleusercontent.com/7K=
+lcPJLXPPJFOMZ40gGpjeKV24igLhtvItKMgVqTcPLvvHCgctawNrimEfEX1EpGKAXFRqCXgsVIa=
+8c5fLapRx1FttVlxwsLsEp4Q2moIRYStXMYu_BRenNPp2HYYu7iTLwtPMhc" alt=3D"Techkri=
+ti_logo.png" width=3D"96" height=3D"94" style=3D"border:none"></span></p></=
+td><td style=3D"border-left:1pt solid rgb(0,0,0);vertical-align:top;padding=
+:5pt"><div><font size=3D"4" face=3D"arial, helvetica, sans-serif" color=3D"=
+#000000"><b>KHUSHBOO KUMARI</b></font></div><div dir=3D"ltr"><font size=3D"=
+2"><font face=3D"Arial, sans-serif" color=3D"#000000">Head Events &amp; Com=
+petitions |=C2=A0</font><span style=3D"color:rgb(0,0,0);font-family:Arial,s=
+ans-serif">Techkriti&#39;26</span></font></div><div dir=3D"ltr"><span style=
+=3D"font-family:Arial,sans-serif"><font size=3D"2" color=3D"#000000">Indian=
+ Institute of Technology Kanpur<br><b>Email:</b>=C2=A0<a href=3D"mailto:hos=
+pitality@techkriti.org" style=3D"color:rgb(17,85,204)" target=3D"_blank">kh=
+ushboo@techkriti.org</a></font></span></div><div dir=3D"ltr"><span style=3D=
+"font-size:9.5pt;font-family:Arial,sans-serif"><font color=3D"#000000"><b>P=
+hone</b></font><font color=3D"#000000" style=3D"font-weight:bold">:</font><=
+/span><span style=3D"color:rgb(0,0,0);font-size:9.5pt;font-family:Arial,san=
+s-serif">=C2=A0(</span><span style=3D"color:rgb(0,0,0);font-size:9.5pt;font=
+-family:Arial,sans-serif">+91)=C2=A0</span><span style=3D"color:rgb(0,0,0);=
+font-family:Arial,sans-serif;font-size:small">9352941607</span></div></td><=
+/tr></tbody></table><div style=3D"font-size:12.8px"><br></div></div><div st=
+yle=3D"color:rgb(80,0,80);font-size:12.8px"><b style=3D"color:rgb(153,153,1=
+53)"><span style=3D"font-size:9.5pt;font-family:arial,sans-serif">Join Us:<=
+/span></b><font style=3D"font-family:arial,sans-serif;font-size:9.5pt"><fon=
+t color=3D"#3d85c6">=C2=A0<font color=3D"#3d85c6"><a href=3D"http://www.tec=
+hkriti.org/" style=3D"color:rgb(17,85,204)" target=3D"_blank"><font color=
+=3D"#3d85c6">Website</font></a>=C2=A0</font>|=C2=A0<a href=3D"https://www.f=
+acebook.com/techkriti.iitk" style=3D"color:rgb(17,85,204)" target=3D"_blank=
+"><font color=3D"#3d85c6">Facebook</font></a>=C2=A0|=C2=A0<a href=3D"https:=
+//twitter.com/techkriti_iitk" style=3D"color:rgb(17,85,204)" target=3D"_bla=
+nk"><font color=3D"#3d85c6">Twitter</font></a>=C2=A0|=C2=A0<a href=3D"http:=
+//google.com/+TechkritiOrg_iitk" style=3D"color:rgb(17,85,204)" target=3D"_=
+blank"><font color=3D"#3d85c6">Google+</font></a>=C2=A0</font><font color=
+=3D"#6fa8dc">|</font><font color=3D"#cfe2f3">=C2=A0</font></font><font colo=
+r=3D"#3d85c6"><a href=3D"https://www.instagram.com/techkriti.iitk/" style=
+=3D"color:rgb(17,85,204);font-family:arial,sans-serif;font-size:9.5pt" targ=
+et=3D"_blank"><font color=3D"#3d85c6">Instagram</font></a><font face=3D"Ari=
+al, sans-serif"><span style=3D"font-size:9.5pt">=C2=A0|=C2=A0</span><span s=
+tyle=3D"font-size:12.6667px"><a href=3D"https://www.youtube.com/user/Techkr=
+itiIITK" style=3D"color:rgb(17,85,204)" target=3D"_blank">YouTube</a></span=
+><span style=3D"font-size:9.5pt">=C2=A0|</span></font>=C2=A0<a href=3D"http=
+s://www.linkedin.com/company/techkriti%2713" style=3D"color:rgb(17,85,204);=
+font-family:arial,sans-serif;font-size:9.5pt" target=3D"_blank"><font color=
+=3D"#3d85c6">LinkedIn</font></a><font face=3D"Arial, sans-serif"><span styl=
+e=3D"font-size:9.5pt">=C2=A0</span></font></font></div></div></div></div>
+
+--0000000000006007b4064ce83332--

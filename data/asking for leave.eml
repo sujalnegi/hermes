@@ -1,0 +1,118 @@
+Delivered-To: sujal1negi@gmail.com
+Received: by 2002:a05:7000:10c5:b0:7b1:62c7:bf15 with SMTP id j5csp2724260mae;
+        Mon, 16 Mar 2026 00:17:09 -0700 (PDT)
+X-Received: by 2002:a05:6402:280f:b0:662:c64f:6c7c with SMTP id 4fb4d7f45d1cf-663babbe160mr6554889a12.19.1773645429303;
+        Mon, 16 Mar 2026 00:17:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1773645429; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=G7fTIV+/0+2B/u6KqidGW2fPxl714ce+Uoz3esiwuGM9BAH7m52XiEeEtCnXfma82X
+         IjG2dN6SofkIkrIDuw+IKfnJ7Sv78SW54tNeNhnE1CLjkTuTIVXQU18DYTNTiq3cbSNR
+         8OSsBVQI5sonuLTWIsqZyl0YWw+Bkb2GzmSdJQFkkabyTW3fWZMY+Rt7OwzKb+yS5BNy
+         73vCiIZsZh4dOMsz/dPve8ctIvgZL1Wd4gyjnN1a0W/M2ntZJGaJyvDkcUV4N5nHNBi1
+         IFU0ViZBMyKyAIhWfN4uG+x6G54nFI1NTen0ifUkFbdk0jo39eL1IEmjtPbLk8zS5BmW
+         Kc2Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=+yO9Nc6Oyw65pXdiX4LmVbnR1D+ZD6Fzhz6xDcNrrXQ=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=QKDbN1o3MZOnsCGAIgWvpOUk68fh6L3+rT3nXkbkM1TXpoaonixwL8tkPHBwLl7HSJ
+         fQcaj8wNOwACg87Bno4+BrKXdOe2yk+VYv2DuTOidy7hlzuUyQSZMatl0yl8ReSKmWL6
+         7sBdDujGlZLwZH2C2BI2eAaXG4cU8ipvDJjLiSjqWEJvkfxqVPqXMbDzWJlWiSeRnATa
+         v1ceYsE4Pa5VanTaJLBvfBG1JheN7BNs5mfWsJNDOgr3f1ihBNEj0KXC3hcvdJjvgefi
+         M3XDykT0f+36bTM3TpVc9JNcI/DvTU3mDkZWkTju86pVVeFhcrh3S3Xh4Uwd3Ysg4Fvu
+         IBeg==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nplw71mJ;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of baqarmustafa84@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=baqarmustafa84@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <baqarmustafa84@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-663d5bc5fb1sor1460219a12.12.2026.03.16.00.17.09
+        for <sujal1negi@gmail.com>
+        (Google Transport Security);
+        Mon, 16 Mar 2026 00:17:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of baqarmustafa84@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nplw71mJ;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of baqarmustafa84@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=baqarmustafa84@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1773645428; cv=none;
+        d=google.com; s=arc-20240605;
+        b=E5Sus2IOjznmvkXFWfaJVy5Mw5rZ3bWlapOPoPqjx/o/grE16H73mh7LcjXfoyBu7G
+         KIrn9NEdeCW55tqvhUorYcownpK0h8hIqXCPeGo8KuqkbvubHhA/hlLA3KbJNs/uB+DL
+         9b1CLLJ0kLhMQNpcOwrtMo/WTfyR5j8XPqH2V+o1cRBHtO9werTGgv5uUCKs+U+DKI4G
+         y4PFJskz+dJguhf3NmElk2Jg4ZpJlp4ZjaWXTlruV33n5KLafhqbAcOPekYATCc1soC0
+         7PxeWrRycTvTFuNTrJM+D2X55Oi7JNUWd8Nhv7AqC85rdk7PbDrBmwdMC6tYgd079Vji
+         76JA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=+yO9Nc6Oyw65pXdiX4LmVbnR1D+ZD6Fzhz6xDcNrrXQ=;
+        fh=PJeB6SWG28Z4w2smV5776U2ZcNJu8sfbeQhZrtUYD2Y=;
+        b=j1OKssSJOSb1bXVa9CGe+j0GQYfDnn3/IdaGor2dByU1FHPElFEc/pM0ouFJywuegt
+         D73tK6AGYzUw8uWwFxb57lAublbep7h2g+wdG/6xgrRfAGxmIN3AdCNbWsEBT8xm3sMn
+         i2+AjsI7Tjt9N59NoqmUDA0b078K4C6IoIPHE3XZxThy8zASF9/fkQra+2uyR1Dfgk+S
+         xui/E2DRkuf2a2V1UrB/LkAWFUnGFc6+dFyRxIySfQ6NkdbSCnHBCoUzpkmUcndBetIB
+         pvAgdS3jpf0imX5cO0OaetcP+iN3dVgqsnFNpRYm7BFqvJhKRQdHB08AgDZ0zdBwEX8Y
+         ILNQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773645428; x=1774250228; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+yO9Nc6Oyw65pXdiX4LmVbnR1D+ZD6Fzhz6xDcNrrXQ=;
+        b=nplw71mJUFljpfzC+5mbvVQdfUgxzhpQZEzE+taBj2LzSR/uTREY7300WJ7Va6LwNM
+         EBlAbeAFCDRfzmjxa0Uuh+cQjg02lvMqLS75P1nLBOdGPXYoZsToCzVBztlBf0gjW0kT
+         X3yiUYwzmdFFJClsTWpBZloW6+Z8d8W6MffaohZ8hcfroNr2sdFK0T9iGZ9DbYoHJ9bi
+         rTf4tfHA6OyK89gj3s9iNAGDGIkpWUjRuiL8MIVf0NWsykL8p6IeXRh/z12YLLGrVwal
+         ybMxZTdu6cwQLEPsMEeVudQX/dllYXM6OUPSvmjxUI+D2VaGHUxdkcLm6sPG0JOH4rG0
+         JbLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773645428; x=1774250228;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+yO9Nc6Oyw65pXdiX4LmVbnR1D+ZD6Fzhz6xDcNrrXQ=;
+        b=XlpkmQ61rnBKtPRsz/tSX8ZYRgVPeeoUV4csQEsy71rhtspPEU1tjhLJOxV3VJCNUZ
+         G9l91GNHSu9vTnbu5xhr/0lD/Ly13aR7wJYjqosg7q+bWMTNUABA7bMNFQGjzpu3Ez2Z
+         2FcVOVLkwk7VF68CC62yhdPowm3ntS+iFcG8k6hhpWel7fJj1vutwJ8RJfvbOzqm9QBX
+         tJc5cUp3pqEUjIQ056hVZy9vS9xCJdymWjKXzesbF7/oGmQCYqq01IQFuCnVZ/3ez23u
+         Qf1zxHVhv4/P2I080Q2uI6k8hkLLtBVnGY197C5bbHUD+JTnRzBT1bf9qgrtAIgfRJQK
+         vURA==
+X-Gm-Message-State: AOJu0YzdmPZwxOXlIMJuxNRV1fHxoM2ud2P6vQAsCI94PbfLwFP4HeLd
+	D2JLfivn1ZVsqkKAjQGszZKwlHLVTtm3xMar6wb+iGWKSkFuD/+JjS3WTyQm3KCJ2WhkNCTyAwD
+	mJwu44cucAZ3enhoajxTjFAN79fFHWYFX7A==
+X-Gm-Gg: ATEYQzwimmiwIrc/QVoAx6yIqCp2vjYOco0RNjRrbrQKDJ7D5I1jauqcLSv0pycvOOj
+	MVQdIR7Ocrkhzr08wYW1+sQ31nCXa1tODbU2jxnOJu0gtqxKPI4gqhlblBC7VftqjfA0cVkgx7c
+	brvMHv3bXmuRL/v6ALfAaajrdrgbk3gwkUtTR7PmcgkerEM2hWeBSlhxzpmtR5DkXaxYpm//Zsq
+	vjKW4uuWS1mZh5dT5RhZC7JEt3Mr/MhIr7ngRqLa8Mv6aDbwqpUqa3KY6NTQSOLcqTRBkoEPysW
+	95huijw=
+X-Received: by 2002:a05:6402:254f:b0:65f:aecc:4f24 with SMTP id
+ 4fb4d7f45d1cf-663babccfdemr5889037a12.24.1773645428210; Mon, 16 Mar 2026
+ 00:17:08 -0700 (PDT)
+MIME-Version: 1.0
+From: Baqar Mustafa <baqarmustafa84@gmail.com>
+Date: Mon, 16 Mar 2026 12:46:56 +0530
+X-Gm-Features: AaiRm51KausZaDeaN4wHnHkX-sFSwCoHfVP26ZDZmqBIPvVXcJexn6I0Pbesaoo
+Message-ID: <CAFJyM3CsQJe86eUaL5XA=77nHjBdVzjOP43Znz0WFOKJuFeyuQ@mail.gmail.com>
+Subject: asking for leave
+To: Sujal Negi <sujal1negi@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000b4c016064d1f015d"
+
+--000000000000b4c016064d1f015d
+Content-Type: text/plain; charset="UTF-8"
+
+i want to go to a leave for an event on 17 march,2026
+
+--000000000000b4c016064d1f015d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">i want to go to a leave for an event on 17 march,2026=C2=
+=A0</div>
+
+--000000000000b4c016064d1f015d--

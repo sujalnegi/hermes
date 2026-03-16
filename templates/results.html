@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes — Results</title>
+    <meta name="description" content="View your sorted email results, select emails for AI responses, and download the Excel report.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="bg-noise"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-brand">
+            <img src="{{ url_for('static', filename='images/android-chrome-192x192.png') }}" alt="Hermes" class="nav-logo">
+            <span class="brand-text">Her<span class="brand-accent">mes</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">
+                <span class="material-icons-round" style="font-size:18px;vertical-align:middle;">arrow_back</span>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <!-- Results Header -->
+    <section class="results-header">
+        <h1 class="results-title">
+            <span class="material-icons-round">task_alt</span>
+            Emails Sorted!
+        </h1>
+        <p class="results-subtitle">
+            Successfully processed <strong>{{ total }}</strong> email{{ 's' if total != 1 else '' }}.
+            Select which emails should receive an <strong>AI-generated response</strong>, then export.
+        </p>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            {% set professors = results | selectattr('sender_type', 'equalto', 'Professor') | list | length %}
+            {% set students = results | selectattr('sender_type', 'equalto', 'Student') | list | length %}
+            {% set companies = results | selectattr('sender_type', 'equalto', 'Company') | list | length %}
+            {% set others = results | selectattr('sender_type', 'equalto', 'Other') | list | length %}
+
+            <div class="stat-card stat-professor">
+                <div class="stat-icon"><span class="material-icons-round">person</span></div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ professors }}</span>
+                    <span class="stat-label">Professor</span>
+                </div>
+            </div>
+            <div class="stat-card stat-student">
+                <div class="stat-icon"><span class="material-icons-round">school</span></div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ students }}</span>
+                    <span class="stat-label">Student</span>
+                </div>
+            </div>
+            <div class="stat-card stat-company">
+                <div class="stat-icon"><span class="material-icons-round">business</span></div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ companies }}</span>
+                    <span class="stat-label">Company</span>
+                </div>
+            </div>
+            <div class="stat-card stat-other">
+                <div class="stat-icon"><span class="material-icons-round">more_horiz</span></div>
+                <div class="stat-info">
+                    <span class="stat-number">{{ others }}</span>
+                    <span class="stat-label">Other</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Export Form wrapping the entire table -->
+    <form action="{{ url_for('export') }}" method="POST" id="export-form">
+        <input type="hidden" name="session_id" value="{{ session_id }}">
+
+        <!-- Toolbar: Filters + Selection + Export -->
+        <section class="results-section">
+            <div class="toolbar">
+                <!-- Filters -->
+                <div class="filter-bar" id="filter-bar">
+                    <button type="button" class="filter-btn active" data-filter="all">
+                        <span class="material-icons-round">list</span> All ({{ total }})
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="Professor">
+                        <span class="material-icons-round">person</span> Professor ({{ professors }})
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="Student">
+                        <span class="material-icons-round">school</span> Student ({{ students }})
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="Company">
+                        <span class="material-icons-round">business</span> Company ({{ companies }})
+                    </button>
+                    <button type="button" class="filter-btn" data-filter="Other">
+                        <span class="material-icons-round">more_horiz</span> Other ({{ others }})
+                    </button>
+                </div>
+
+                <!-- Selection controls + Export -->
+                <div class="selection-bar">
+                    <div class="select-controls">
+                        <button type="button" class="btn btn-outline btn-sm" id="select-all-btn">
+                            <span class="material-icons-round">check_box</span>
+                            Select All
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm" id="deselect-all-btn">
+                            <span class="material-icons-round">check_box_outline_blank</span>
+                            Deselect All
+                        </button>
+                        <span class="selection-count" id="selection-count">0 selected for AI response</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="export-btn">
+                        <span class="material-icons-round">download</span>
+                        Export as Excel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Table -->
+            <div class="results-table-wrapper">
+                <table class="results-table" id="results-table">
+                    <thead>
+                        <tr>
+                            <th class="col-check">
+                                <label class="custom-check" title="Toggle all">
+                                    <input type="checkbox" id="header-check">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </th>
+                            <th>#</th>
+                            <th>Subject</th>
+                            <th>From</th>
+                            <th>Date</th>
+                            <th>Sender Type</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in results %}
+                        <tr class="result-row" data-sender-type="{{ item.sender_type }}" data-index="{{ loop.index0 }}">
+                            <td class="col-check">
+                                <label class="custom-check">
+                                    <input type="checkbox" name="selected_indices" value="{{ loop.index0 }}" class="row-checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td class="row-num">{{ loop.index }}</td>
+                            <td class="row-subject">
+                                <span class="subject-text">{{ item.subject }}</span>
+                                {% if item.body_preview %}
+                                <span class="body-preview">{{ item.body_preview[:100] }}...</span>
+                                {% endif %}
+                            </td>
+                            <td class="row-from">{{ item['from'] }}</td>
+                            <td class="row-date">{{ item.date }}</td>
+                            <td>
+                                <span class="badge badge-{{ item.sender_type | lower }}">
+                                    {{ item.sender_type }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="purpose-tag">{{ item.purpose }}</span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </form>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="{{ url_for('static', filename='images/android-chrome-192x192.png') }}" alt="" class="footer-logo">
+        <p>&copy; 2026 Hermes &mdash; The messenger of the gods, for your inbox</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
